@@ -88,6 +88,8 @@ public class FileActivity extends AppCompatActivity {
                     startResultActivity();
                 }
                 else{
+                    Toast.makeText(getBaseContext(), "Select file and mode to continue!",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
             }

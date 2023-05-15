@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class SpeedMode {
 
     ArrayList<Point> pointList;
-    double SPEED_THRESHOLD = 0.09; //The minimum speed the user has to move in
+    double SPEED_THRESHOLD = 0.09; //The minimum speed the user has to move in (in meters per second)
     private int speed_counter; //Consecutive times user has moved equal or above SPEED_THRESHOLD
     ArrayList<int[]> speedTripList;
 
@@ -31,7 +31,7 @@ public class SpeedMode {
 
                 for(int y = x + 1; y < pointList.size(); y++)
                 {
-                    if(pointList.get(y).getSpeed() >= SPEED_THRESHOLD)
+                    if(pointList.get(y).getSpeed() > SPEED_THRESHOLD)
                     {
                         speed_counter = speed_counter + 1;
                         if(pointList.get(x).distanceTo(pointList.get(y)) >= 100)
@@ -97,7 +97,7 @@ public class SpeedMode {
         for (int[] trip : trips) {
             if (currentTrip == null) {
                 currentTrip = trip;
-            } else if (trip[0] - currentTrip[1] <= 3) {
+            } else if (trip[0] - currentTrip[1] <= 6) {
                 currentTrip[1] = trip[1];
             } else {
                 mergedTrips.add(currentTrip);

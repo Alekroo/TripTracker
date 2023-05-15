@@ -64,8 +64,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="129dp"
-        android:layout_height="0dp"
+        android:layout_width="152dp"
+        android:layout_height="149dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="255dp"
         android:layout_marginEnd="19dp"
@@ -76,21 +76,21 @@
 
         <RadioButton
             android:id="@+id/rbSpeed"
-            android:layout_width="147dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
-            android:text="Speed" />
+            android:text="SpeedMode" />
 
         <RadioButton
             android:id="@+id/rbMovement"
             android:layout_width="144dp"
             android:layout_height="wrap_content"
-            android:text="Movement" />
+            android:text="MovementMode" />
 
         <RadioButton
             android:id="@+id/rbTdbscan"
             android:layout_width="146dp"
             android:layout_height="wrap_content"
-            android:text="TDBSCAN" />
+            android:text="TDBSCANMode" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

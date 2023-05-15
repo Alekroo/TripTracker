@@ -99,7 +99,7 @@ public class MovementMode {
         for (int[] trip : trips) {
             if (currentTrip == null) {
                 currentTrip = trip;
-            } else if (trip[0] - currentTrip[1] <= 3) {
+            } else if (trip[0] - currentTrip[1] <= 6) {
                 currentTrip[1] = trip[1];
             } else {
                 mergedTrips.add(currentTrip);

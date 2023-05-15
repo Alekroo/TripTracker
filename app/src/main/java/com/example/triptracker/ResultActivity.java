@@ -92,7 +92,7 @@ public class ResultActivity extends AppCompatActivity {
         ArrayList<String> pa = new ArrayList<>();
         for(ArrayList<Point> trip : allTrips)
         {
-            pa.add("Start: " + trip.get(0).getTimestamp() + "\nEnded "
+            pa.add("Started: " + trip.get(0).getTimestamp() + "\nEnded: "
                     + trip.get(trip.size()-1).getTimestamp());
         }
 
@@ -153,6 +153,8 @@ public class ResultActivity extends AppCompatActivity {
         }
     }
 
+    //Creates a new arraylist of points meant to represent the trip, which will be
+    //further used in MapsActivity to mark the trip
     public ArrayList<Point> pointsToMap(Point from, Point to)
     {
         ArrayList<Point> tripz = new ArrayList<>();
@@ -183,6 +185,9 @@ public class ResultActivity extends AppCompatActivity {
         return tripz;
     }
 
+    //TDBSCANs returns clusters, not trips. This method is used to obtain trips
+    //from the points between clusters.
+
     public ArrayList<ArrayList<Point>> fromActivitiesToTrips(ArrayList<ArrayList<Point>> activities)
     {
         ArrayList<ArrayList<Point>> foundTrips = new ArrayList<ArrayList<Point>>();
@@ -194,10 +199,9 @@ public class ResultActivity extends AppCompatActivity {
         {
             tripStart = pointList.get(0);
             tripEnd = pointList.get(pointList.size()-1);
-            if(calculateTime(tripStart, tripEnd) >= 60)
-            {
-                foundTrips.add(formTrip(tripStart,tripEnd));
-            }
+
+            foundTrips.add(formTrip(tripStart,tripEnd));
+
             return foundTrips;
         }
 
@@ -207,44 +211,30 @@ public class ResultActivity extends AppCompatActivity {
             {
                 tripStart = pointList.get(0);
                 tripEnd =  activities.get(0).get(0);
-                if(calculateTime(tripStart, tripEnd) >= 60)
-                {
-                    foundTrips.add(formTrip(tripStart,tripEnd));
-                }
+
+                foundTrips.add(formTrip(tripStart,tripEnd));
+
             }
             else if(x+1 < activities.size()){
 
                 tripStart = activities.get(x).get(activities.get(x).size()-1);
                 tripEnd = activities.get(x+1).get(0);
-                if(calculateTime(tripStart, tripEnd) >= 60)
-                {
-                    foundTrips.add(formTrip(tripStart,tripEnd));
-                }
+
+                foundTrips.add(formTrip(tripStart,tripEnd));
+
             }
             if(x+1 == activities.size())
             {
                 tripStart = activities.get(x).get(activities.get(x).size()-1);
                 tripEnd = pointList.get(pointList.size()-1);
-                if(calculateTime(tripStart, tripEnd) >= 60)
-                {
-                    foundTrips.add(formTrip(tripStart,tripEnd));
-                }
+
+
+                foundTrips.add(formTrip(tripStart,tripEnd));
+
             }
 
         }
         return foundTrips;
-    }
-
-    public long calculateTime(Point tripStart, Point tripEnd)
-    {
-        LocalDateTime y = tripStart.getTimestamp();
-        LocalDateTime x = tripEnd.getTimestamp();
-        Duration duration = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            duration = Duration.between(y, x);
-            return duration.getSeconds();
-        }
-        return 0;
     }
 
     public ArrayList<Point> formTrip(Point tripStart, Point tripEnd)
