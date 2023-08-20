@@ -194,7 +194,6 @@ public class ResultActivity extends AppCompatActivity {
         Point tripStart;
         Point tripEnd;
 
-
         if(activities.size() == 0)
         {
             tripStart = pointList.get(0);
