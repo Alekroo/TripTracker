@@ -19,3 +19,7 @@ data.
 TripTracker offers three modes for trip detection: speed-based,
 movement-based, and an unsupervised machine learning algorithm
 named TDBSCANMode, which is a modified version of the DBSCAN algorithm.
+
+*Main screen*
+
+<img src="https://github.com/A1ekr0/TripTracker/blob/main/tt_home.jpg" alt="Alt Text" height="500"/> 
